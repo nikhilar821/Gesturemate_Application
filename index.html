@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestureMate</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <button id="run-button">
+    <div class="mic">
+      <i class="mic-icon"></i>
+      <div class="mic-shadow"></div>
+    </div>
+  </button>
+  <div class="center-text">
+    GestureMate
+  </div>
+  <div class="bottom-text">
+    Listening..
+  </div>
+  <script>
+    const { ipcRenderer } = require('electron')
+    const runButton = document.getElementById('run-button')
+
+    runButton.addEventListener('click', () => {
+      ipcRenderer.send('run-python-script', ['arg1', 'arg2'])
+    })
+  </script>
+</body>
+
+</html>
